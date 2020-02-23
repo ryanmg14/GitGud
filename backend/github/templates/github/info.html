@@ -3,7 +3,7 @@
 {% block content %}
     {% block header %} {% endblock %} 
     <section class="full-section full-height">
-        {% for commit in commits %}
+        <!-- {% for commit in commits %}
             {{ commit.msg }}
             <br>
             {{ commit.date }}
@@ -15,8 +15,8 @@
             {{ language.percent }}
         {% endfor %}
         <br><br><br>
-        {{ contributors.number }}
-        <p>Number of Commits</p>
+        {{ contributors.number }} -->
+        <p id="num_commits">Number of Commits</p>
         <div class="row">
             <div class="row-item">
                 <canvas style="width: 40vw;" class="in-line" id="line-chart"></canvas>
@@ -28,9 +28,85 @@
     </section>
 
     <script>
+        var com_dates = [];
+        var com_num = [];
+        var index = -1;
+        var totalCom = 0;
         {% for commit in commits %}
-            var date = "{{ commit.date }}"
-            alert(date)
+            if (!com_dates.includes("{{ commit.date }}")){
+                com_dates.push("{{ commit.date }}");
+                index++;
+                com_num[index] = 1;
+            } 
+            else {
+                com_num[index]++;
+            }
+            totalCom++;
         {% endfor %}
+        
+        document.getElementById('num_commits').innerHTML = "Total Commits:" + totalCom;
+
+        var line_ctx = document.getElementById('line-chart').getContext('2d');
+        var line_chart = new Chart(line_ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: com_dates,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: com_num
+            }]
+        },
+
+        // Configuration options go here
+        options: {
+            scales: {
+                yAxes: [{
+                    id:'main-axis',
+                    ticks: {
+                        stepSize: 20 // this worked as expected
+                            }
+                    }],
+                    }
+        }
+    });
+
+    var language_names = [];
+    var language_percents= [];
+    {% for language in languages %}
+        language_names.push("{{ language.name }}");
+        // var percent = parseInt("{{ language.percent }}");
+        var percent = "{{ language.percent }}";
+        percent = percent.substring(0, percent.length - 1);
+        language_percents.push(Number(percent));
+    {% endfor %}
+
+    var pie_ctx = document.getElementById('pie-chart').getContext('2d');
+    var pie_chart = new Chart(pie_ctx, {
+    // The type of chart we want to create
+    type: 'pie',
+
+    // The data for our dataset
+
+    data: {
+        labels: language_names,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: [ 'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                ],
+            borderColor: 'rgb(255, 99, 132)',
+            data: language_percents,
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
     </script>
 {% endblock %}

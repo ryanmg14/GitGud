@@ -17,6 +17,7 @@
         <br><br><br>
         {{ contributors.number }} -->
         <p id="num_commits">Number of Commits</p>
+        <p id="num_contributors">Number of Contributors</p>
         <div class="row">
             <div class="row-item">
                 <canvas style="width: 45vw;" class="in-line" id="line-chart"></canvas>
@@ -44,7 +45,8 @@
             totalCom++;
         {% endfor %}
         
-        document.getElementById('num_commits').innerHTML = "Total Commits:" + totalCom;
+        document.getElementById('num_commits').innerHTML = "Total Commits: " + totalCom;
+        document.getElementById('num_contributors').innerHTML = "Number of Contributors: " + "{{contributors.number}}";
 
         var line_ctx = document.getElementById('line-chart').getContext('2d');
         var line_chart = new Chart(line_ctx, {
@@ -55,7 +57,7 @@
         data: {
             labels: com_dates,
             datasets: [{
-                label: 'My First dataset',
+                label: 'Number of Commits per Date',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: com_num

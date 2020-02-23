@@ -1,40 +1,44 @@
-var line_ctx = document.getElementById('line-chart').getContext('2d');
-var line_chart = new Chart(line_ctx, {
-    // The type of chart we want to create
-    type: 'line',
+function line_chart(){
+    var line_ctx = document.getElementById('line-chart').getContext('2d');
+    var line_chart = new Chart(line_ctx, {
+        // The type of chart we want to create
+        type: 'line',
 
-    // The data for our dataset
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
+        // The data for our dataset
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45]
+            }]
+        },
 
-    // Configuration options go here
-    options: {
-        scales: {
-            yAxes: [{
-                id:'main-axis',
-                ticks: {
-                     stepSize: 40 // this worked as expected
-                        }
-                   }],
-                }
-    }
-});
+        // Configuration options go here
+        options: {
+            scales: {
+                yAxes: [{
+                    id:'main-axis',
+                    ticks: {
+                        stepSize: 40 // this worked as expected
+                            }
+                    }],
+                    }
+        }
+    });
+}
 
-var pie_ctx = document.getElementById('pie-chart').getContext('2d');
-var pie_chart = new Chart(pie_ctx, {
+function pie_chart(){ 
+    var pie_ctx = document.getElementById('pie-chart').getContext('2d');
+    var pie_chart = new Chart(pie_ctx, {
     // The type of chart we want to create
     type: 'pie',
 
     // The data for our dataset
+
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: [],
         datasets: [{
             label: 'My First dataset',
             backgroundColor: [ 'rgba(255, 99, 132, 0.2)',
@@ -50,4 +54,5 @@ var pie_chart = new Chart(pie_ctx, {
 
     // Configuration options go here
     options: {}
-});
+    });
+}

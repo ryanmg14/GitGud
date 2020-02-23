@@ -40,7 +40,7 @@ button {
     display: flex;
 }
 
-#search-bar{
+.search-bar{
     font-size: 15pt;
     border: 2px lightgrey solid;
     border-radius: 5px;

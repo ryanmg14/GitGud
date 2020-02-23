@@ -1,8 +1,21 @@
 {% extends 'github/base.html ' %}
 {% block title %}Info Page{% endblock %}
-{% block info-content %}
+{% block content %}
     {% block header %} {% endblock %} 
     <section class="full-section full-height">
+        {% for commit in commits %}
+            {{ commit.msg }}
+            <br>
+            {{ commit.date }}
+        {% endfor %}
+        <br><br><br>
+        {% for language in languages %}
+            {{ language.name }}
+            <br>
+            {{ language.percent }}
+        {% endfor %}
+        <br><br><br>
+        {{ contributors.number }}
         <p>Number of Commits</p>
         <div class="row">
             <div class="row-item">
@@ -15,4 +28,4 @@
     </section>
 
     <script src="myCharts.js"></script>
-{%endblock}
+{%endblock%}

@@ -1,0 +1,18 @@
+{% extends 'github/base.html ' %}
+{% block title %}Info Page{% endblock %}
+{% block info-content %}
+    {% block header %} {% endblock %} 
+    <section class="full-section full-height">
+        <p>Number of Commits</p>
+        <div class="row">
+            <div class="row-item">
+                <canvas style="width: 40vw;" class="in-line" id="line-chart"></canvas>
+            </div>
+            <div class="row-item">
+                <canvas style="width: 40vw;" class="in-line" id="pie-chart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <script src="myCharts.js"></script>
+{%endblock}

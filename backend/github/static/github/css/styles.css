@@ -2,10 +2,24 @@ body {
     font-family: 'Roboto'; 
     padding:0px;
     margin: 0px;
+    background-color: #fdfdfd;
+    color: #636b6f;
 }
 
 button {
     border-color: lightgray;
+    border: none;
+}
+
+a {
+    color: gray;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .header{
@@ -76,4 +90,9 @@ canvas{
     display: flex;
     justify-content: center;
     width: 10vw;
+}
+
+.home {
+    font-family: Nunito;
+    font-size: 84px;
 }

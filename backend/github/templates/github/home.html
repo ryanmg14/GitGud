@@ -4,6 +4,7 @@
 {% block content %}
 <section class="full-section full-height ">
         <!-- <nav class=top-nav> -->
+            <h1 class="home" style="margin-bottom:0px;">GET GIT</h1>
             <form class="top-nav" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.base_url | add_class:"search-bar"}}

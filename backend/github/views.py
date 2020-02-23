@@ -31,3 +31,7 @@ def api_list(request, pk):
     commits = list(repo.commit_set.all().values())
     languages = list(repo.language_set.all().values())
     return JsonResponse({'commits' : commits, 'languages' : languages})
+
+def searches(request):
+    repos = Repo.objects.all()
+    return render(request, 'github/searches.html', { 'repos' : repos })

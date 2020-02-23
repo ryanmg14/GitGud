@@ -22,11 +22,6 @@ a:hover {
     text-decoration: underline;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
-
 .header{
     height: 10vh;
     display: flex;

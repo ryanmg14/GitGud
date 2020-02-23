@@ -4,6 +4,10 @@ body {
     margin: 0px;
 }
 
+button {
+    border-color: lightgray;
+}
+
 .header{
     height: 10vh;
     display: flex;

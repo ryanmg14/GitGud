@@ -125,3 +125,8 @@ canvas{
     font-family: 'Krona One';
     font-size: 15pt;
 }
+
+.images{
+    position: absolute;
+
+}

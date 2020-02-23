@@ -1,7 +1,8 @@
-import urllib.request
+import urllib.request, json
 import re as re
 from bs4 import BeautifulSoup
 import argparse
+import requests
 
 from django.db import models
 
@@ -13,12 +14,10 @@ class Repo(models.Model):
 
     # Find Number of Contributors
     def find_contributors(self):
-        page = urllib.request.urlopen(self.base_url)
-        soup = BeautifulSoup(page, 'html.parser')
+        custom_url = self.base_url[18:]
+        response = json.loads(requests.get('https://api.github.com/repos' + custom_url + '/contributors').text)
 
-        contributor = soup.find(class_='num text-emphasized')
-        contributor_num = contributor.text
-        num_contributors = int(contributor_num.strip())
+        num_contributors = len(response)
 
         # Create contributor object
         contributor = Contributor.objects.create(repo=self, number=num_contributors)

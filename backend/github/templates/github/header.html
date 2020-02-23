@@ -1,13 +1,9 @@
-{% extends 'github/info.html' %}
+{% load widget_tweaks %}
 {% block header %}
     <div class="fixed-pos">
         <section class="header">
             <!-- <nav class=top-nav> -->
-                    <form class="top-nav" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.base_url | add_class:"search-bar"}}
-                        <button type="submit" class="in-line icon"> <i class="fas fa-search"></i> </button>
-                    </form>   
+                   <a href="{% url 'home' %} "><div class="back_btn">Go Back</div> </a>
             <!-- </nav> -->
             <!-- <p class="no-marg lg-text">Git Gud</p> -->
         </section>

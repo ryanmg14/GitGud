@@ -1,8 +1,12 @@
 {% extends 'github/base.html' %}
 {% block title %}Previous Searches{% endblock %}
 {% block content %}
-{% for repo in repos %}
-<a href="{% url 'info' pk=repo.pk %}">{{ repo.base_url }}</a><br>
-{% endfor %}
-<a href="{% url 'home' %}">Back</a>
+<section class="full-section full-height">
+    <div class="row_links">
+        {% for repo in repos %}
+            <div class="repo_links"> {% url 'info' pk=repo.pk %} : <a href="{% url 'info' pk=repo.pk %}">{{ repo.base_url }}</a></div><br>
+        {% endfor %}
+        <div class="tiny"> <a href="{% url 'home' %}">Back</a> </div>
+    </div>
+</section>
 {% endblock %}

@@ -26,4 +26,11 @@
             </div>
         </div>
     </section>
+
+    <script>
+        {% for commit in commits %}
+            var date = "{{ commit.date }}"
+            alert(date)
+        {% endfor %}
+    </script>
 {% endblock %}

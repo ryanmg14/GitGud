@@ -19,13 +19,12 @@ def info(request, pk):
     contributors = repo.contributor_set.first()
     commits = repo.commit_set.all()
     languages = repo.language_set.all()
-    return render(request, 'github/info.html')
+    return render(request, 'github/info.html', {'repo':repo,'contributors':contributors,'commits':commits,'languages':languages})
 
 def api(request, pk):
     repo = Repo.objects.get(pk=pk)
-    r = serializers.serialize('json', [repo])
     contributors = serializers.serialize('json', [repo.contributor_set.first()])
-    return HttpResponse(r)
+    return JsonResponse({'repo':repo,'contributors':contributors})
 
 def api_list(request, pk):
     repo = Repo.objects.get(pk=pk)

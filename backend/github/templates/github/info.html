@@ -1,7 +1,7 @@
 {% extends 'github/base.html ' %}
 {% block title %}Info Page{% endblock %}
 {% block content %}
-    {% block header %} {% endblock %} 
+    {% include 'github/header.html' %} 
     <section class="full-section full-height">
         <!-- {% for commit in commits %}
             {{ commit.msg }}

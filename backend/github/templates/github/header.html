@@ -1,14 +1,15 @@
-{% extends 'github/info.html ' %}
+{% extends 'github/info.html' %}
 {% block header %}
     <div class="fixed-pos">
         <section class="header">
             <!-- <nav class=top-nav> -->
-                <form name="search" class="top-nav" action="" onsubmit="return validateForm()" method="GET">
-                    <input name="search-input" id="search-bar" placeholder="Search Git Https://"></input>
-                    <button type="submit" class="in-line icon"> <i class="fas fa-search"></i> </button>
-                </form>    
+                    <form class="top-nav" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.base_url | add_class:"search-bar"}}
+                        <button type="submit" class="in-line icon"> <i class="fas fa-search"></i> </button>
+                    </form>   
             <!-- </nav> -->
             <!-- <p class="no-marg lg-text">Git Gud</p> -->
         </section>
     </div>    
-{%endblock}
+{% endblock %}

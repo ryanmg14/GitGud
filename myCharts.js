@@ -15,7 +15,16 @@ var line_chart = new Chart(line_ctx, {
     },
 
     // Configuration options go here
-    options: {}
+    options: {
+        scales: {
+            yAxes: [{
+                id:'main-axis',
+                ticks: {
+                     stepSize: 40 // this worked as expected
+                        }
+                   }],
+                }
+    }
 });
 
 var pie_ctx = document.getElementById('pie-chart').getContext('2d');
